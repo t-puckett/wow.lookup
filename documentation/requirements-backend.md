@@ -3,8 +3,8 @@
 ## Project Overview
 
 **Project Name:** wow.lookup — Backend API
-**Description:** A Node.js backend service that proxies and processes World of Warcraft player data from the Blizzard Battle.net API.
-**Tech Stack:** Node.js
+**Description:** A Django backend service that proxies and processes World of Warcraft player data from the Blizzard Battle.net API.
+**Tech Stack:** Django
 **Date:** 2026-03-06
 
 ---
@@ -16,22 +16,19 @@
 | ID   | Requirement | Priority |
 |------|-------------|----------|
 | F-01 | Authenticate with the Blizzard API via OAuth 2.0 client credentials | High |
-| F-02 | Expose endpoints for fetching character profile data | High |
+| F-02 | Expose endpoints for fetching player profile data | High |
+| F-03 | Expose endpoints for fetching dungeon data | High |
+| F-04 | Expose endpoints for fetching gear data | High |
 | F-03 | Cache Blizzard API responses to reduce redundant external calls | High |
-| F-04 | [Describe additional feature] | Medium |
-| F-05 | [Describe additional feature] | Low |
 
 ### 1.2 User Stories
 
 ```
-As a [consumer of this API],
-I want to [call an endpoint],
-So that [I receive the expected data].
+As a user, I want to call wow api, to retrieve information about players, gear, dungeon stats.
 ```
 
 **Example stories for this project:**
 
-- As the React frontend, I want to call `GET /character/:realm/:name` so that I receive structured character data without exposing API credentials to the browser.
 - As an operator, I want failed external API calls to return clear error responses, so that the frontend can display meaningful messages.
 - As an operator, I want rate limiting enforced on all public endpoints, so that the service is protected from abuse.
 
@@ -82,9 +79,9 @@ So that [I receive the expected data].
 ### 3.1 Runtime & Framework
 
 - **Node.js version:** 20 LTS+
-- **Framework:** [e.g., Express / Fastify / Hono — choose one]
-- **Language:** [JavaScript / TypeScript — choose one]
-- **Package manager:** [npm / pnpm / yarn — choose one]
+- **Framework:** Django
+- **Language:** Python
+- **Package manager:** pip
 
 ### 3.2 Project Structure
 
