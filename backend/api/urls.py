@@ -1,7 +1,7 @@
-from rest_framework.routers import DefaultRouter
-from .views import ArticleViewSet
+from django.urls import path
+from .views import bnet_login, bnet_callback
 
-router = DefaultRouter()
-router.register(r'articles', ArticleViewSet)
-
-urlpatterns = router.urls
+urlpatterns = [
+    path('auth/bnet/login/', bnet_login, name='bnet-login'),
+    path('auth/bnet/callback/', bnet_callback, name='bnet-callback'),
+]
