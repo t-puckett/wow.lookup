@@ -1,10 +1,10 @@
 /* The following line can be included in a src/App.scss */
-import SearchBox from './search/searchbox.tsx'
+import Home from './home/home.tsx'
 
 function App() {
   return (
     <>
-      <SearchBox/>
+    <Home/>
     </>
   )
 }
