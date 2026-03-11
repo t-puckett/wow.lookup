@@ -1,22 +1,24 @@
-import {Select, type SelectChangeEvent, MenuItem, TextField, Button, FormControl, InputLabel, Box } from "@mui/material"
-import {useState, Fragment} from "react"
+import {useState, type ChangeEvent } from "react"
+import { Col, Form, Row, Button, Container} from "react-bootstrap";
 
 export default function SearchBox() {
     const [region, setRegion] = useState('');
     const [realm, setRealm] = useState('');
     const [name, setName] = useState('');
 
-    const REALM_LIST = ["Cenarius","Coilfang","Kil'Jaeden","Kilrogg","Lightbringer","Mok'Nathal","Moonrunner","Mug'thol"]
-
-    const handleRegionChange = (event: SelectChangeEvent) => {
+    const REALM_LIST : string[] = ["Cenarius","Coilfang","Kil'Jaeden","Kilrogg","Lightbringer","Mok'Nathal","Moonrunner","Mug'thol","Proudmoore"]
+    const REGION_LIST: string[] = [ "us", "eu", "kr", "tw" ]
+    const handleRegionChange = (event: ChangeEvent<HTMLSelectElement>) => {
         setRegion(event.target.value as string);
     }
 
-    const handleRealmChange = (event: SelectChangeEvent) => {
+    const handleRealmChange = (event: ChangeEvent<HTMLSelectElement>) => {
         setRealm(event.target.value as string);
     }
 
-    function submit(player : playerInfo) {
+    function submit() {
+        setName(name)
+        const player:playerInfo = {region,realm,name}
         console.log(player)
     }
 
@@ -26,70 +28,32 @@ export default function SearchBox() {
         name: string;
     }
 
-    return (
-        <Fragment>
-            <div>
-            <Box 
-                component="form"
-                sx={{ 
-                    display:'grid',
-                    width: 'fit-content',
-                    mx:'auto',
-                    spacing: 2,
-                    height:'100vh',
-                    justifyContent:'center',
-                    alignItems:'center',
-                    flexDirection:'row'}}>
-                    <FormControl >
-                    <InputLabel id="region-menu-label">Select Region</InputLabel>
-                    <Select
-                        labelId="region-menu-label"
-                        id="region-menu"
-                        value={region}
-                        onChange={handleRegionChange}>
-                        <MenuItem value="us">Americas</MenuItem>
-                        <MenuItem value="eu">Europe</MenuItem>
-                        <MenuItem value="kr">Korea</MenuItem>
-                        <MenuItem value="tw">Taiwan</MenuItem>
-                        <MenuItem value="cn">China</MenuItem>
-                    </Select>
-
-                    <InputLabel id="realm-menu-label">Select Realm</InputLabel>
-                    <Select
-                        labelId="realm-menu-label"
-                        id="realm-menu"
-                        value={realm}
-                        onChange={handleRealmChange}>
-                        {
-                            
-                                REALM_LIST.map((r:string,index:number)=> (
-                                <MenuItem key={index} value={r}>{r}</MenuItem>
-                            ))
-                        }
-                    </Select>
-                    <InputLabel id="character-name">Write Character Name</InputLabel>
-                    <TextField
-                        id="name"
-                        value={name}
-                        onChange={(e) => {
-                            setName(e.target.value)
-                            }
-                        }/>
-                        <Button 
-                            variant="outlined" 
-                            size="small" 
-                            color="warning" 
-                            onClick={() =>
-                                {
-                                    const player : playerInfo = {region: region, realm: realm, name: name}
-                                    submit(player)
-                                }
-                            }>Submit
-                        </Button>
-                </FormControl>      
-            </Box>
-            </div>
-        </Fragment>
+    return ( 
+        <Container className="d-flex justify-content-center">
+            <Form >
+                <Row className="d-flex align-items-center vh-100">
+                    <Col xs="auto">
+                        <Form.Select onChange={handleRegionChange} value={region} aria-label="Default">
+                            {REGION_LIST.map((regions: string,index:number) => {
+                                return <option key={index} value={regions}>{regions}</option>
+                            })}
+                        </Form.Select>
+                    </Col>
+                    <Col xs="auto">
+                        <Form.Select aria-label="Default" onChange={handleRealmChange} value={realm}>
+                            {REALM_LIST.map((realms: string, index: number) => {
+                                return <option key={index} value={realms}>{realms}</option>
+                            })}
+                        </Form.Select>
+                    </Col>
+                    <Col xs="auto">
+                        <Form.Control id="inlineFormName" type="text" placeholder="Character Name" onChange={event => { setName(event.target.value) }} value={name}></Form.Control>
+                    </Col>
+                    <Col>
+                        <Button id="submitInfo" className="align-self-end" onClick={submit} type="submit">Search</Button>
+                    </Col>
+                </Row>
+            </Form>
+        </Container>             
     )
 }
-

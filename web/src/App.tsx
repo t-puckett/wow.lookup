@@ -1,4 +1,4 @@
-/* The following line can be included in a src/App.scss */
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './home/home.tsx'
 
 function App() {
