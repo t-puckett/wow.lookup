@@ -1,5 +1,5 @@
 import {useState, type ChangeEvent } from "react"
-import { Col, Form, Row, Button, Container} from "react-bootstrap";
+import { Col, Form, Row, Button, Container, FloatingLabel} from "react-bootstrap";
 
 export default function SearchBox() {
     const [region, setRegion] = useState('');
@@ -32,22 +32,28 @@ export default function SearchBox() {
         <Container className="d-flex justify-content-center">
             <Form >
                 <Row className="d-flex align-items-center vh-100">
-                    <Col xs="auto">
-                        <Form.Select onChange={handleRegionChange} value={region} aria-label="Default">
+                    <Col >
+                    <FloatingLabel label="Region">
+                        <Form.Select style={{width:'100px'}} onChange={handleRegionChange} value={region} aria-label="Default">
                             {REGION_LIST.map((regions: string,index:number) => {
                                 return <option key={index} value={regions}>{regions}</option>
                             })}
                         </Form.Select>
+                        </FloatingLabel>
                     </Col>
                     <Col xs="auto">
+                        <FloatingLabel label="Realm">
                         <Form.Select aria-label="Default" onChange={handleRealmChange} value={realm}>
                             {REALM_LIST.map((realms: string, index: number) => {
                                 return <option key={index} value={realms}>{realms}</option>
                             })}
                         </Form.Select>
+                        </FloatingLabel>
                     </Col>
                     <Col xs="auto">
-                        <Form.Control id="inlineFormName" type="text" placeholder="Character Name" onChange={event => { setName(event.target.value) }} value={name}></Form.Control>
+                        <FloatingLabel label="Character Name">
+                        <Form.Control id="inlineFormName" type="text" onChange={event => { setName(event.target.value) }} value={name}></Form.Control>
+                        </FloatingLabel>
                     </Col>
                     <Col>
                         <Button id="submitInfo" className="align-self-end" onClick={submit} type="submit">Search</Button>
