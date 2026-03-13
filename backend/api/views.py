@@ -47,3 +47,13 @@ def bnet_callback(request):
         return Response({'error': 'Token exchange failed'}, status=400)
 
     return Response(token_response.json())
+
+#temp till i get all the info we need sent to this.
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def character_summary(request):
+    code - request.GET.get('code')
+
+    params = {
+        'info' : 'temp'
+    }

@@ -91,6 +91,6 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-BNET_CLIENT_ID = 'b5afa9ae20b84958ab8d0685eda71047'
-BNET_CLIENT_SECRET = 'GQ0qxr4w6izMmHkkxscUexwioWahikpW'
+BNET_CLIENT_ID = 'env'
+BNET_CLIENT_SECRET = 'env'
 BNET_REDIRECT_URI = 'http://localhost:8000/api/auth/bnet/callback/'

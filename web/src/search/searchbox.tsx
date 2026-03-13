@@ -8,6 +8,7 @@ export default function SearchBox() {
 
     const REALM_LIST : string[] = ["Cenarius","Coilfang","Kil'Jaeden","Kilrogg","Lightbringer","Mok'Nathal","Moonrunner","Mug'thol","Proudmoore"]
     const REGION_LIST: string[] = [ "us", "eu", "kr", "tw" ]
+    // const local: string[] = ["en_US","es_MX", "pt_BR","de_DE","en_GB","es_ES","fr_FR","it_IT","ru_RU","ko_KR","zh_TW","zh_CN"]
     const handleRegionChange = (event: ChangeEvent<HTMLSelectElement>) => {
         setRegion(event.target.value as string);
     }
@@ -20,6 +21,7 @@ export default function SearchBox() {
         setName(name)
         const player:playerInfo = {region,realm,name}
         console.log(player)
+        //add axios and import something that can call backend apis.
     }
 
     interface playerInfo {
