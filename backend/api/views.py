@@ -48,7 +48,7 @@ def bnet_callback(request):
 
     return Response(token_response.json())
 
-#temp till i get all the info we need sent to this.
+#temp till i get all the info we need sent to this. We also need another file for calls not exposed to the token generation.
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def character_summary(request):

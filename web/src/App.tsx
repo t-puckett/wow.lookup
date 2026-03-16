@@ -1,5 +1,5 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './home/home.tsx'
+
 
 function App() {
   return (
