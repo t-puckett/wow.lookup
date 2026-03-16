@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -91,6 +96,6 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-BNET_CLIENT_ID = 'env'
-BNET_CLIENT_SECRET = 'env'
-BNET_REDIRECT_URI = 'http://localhost:8000/api/auth/bnet/callback/'
+BNET_CLIENT_ID = os.getenv("BNET_CLIENT_ID")
+BNET_CLIENT_SECRET = os.getenv("BNET_CLIENT_SECRET")
+BNET_REDIRECT_URI = os.getenv("BNET_REDIRECT_URI")
