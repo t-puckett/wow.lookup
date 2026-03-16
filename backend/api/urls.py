@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import auth_views, charcter_views, guild_views
+from .views import auth_views, charcter_views
 
 urlpatterns = [
     path('auth/bnet/login/', auth_views.bnet_login, name='bnet-login'),

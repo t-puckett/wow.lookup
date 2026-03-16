@@ -30,12 +30,14 @@ SECRET_KEY = 'django-insecure-&kcwpb+^s#@46x1eo3qs8*d6jws3*q$y&#6y&m!+vr4wwsdixc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.contenttypes',
+    'django.contrib.auth',
     'django.contrib.sessions',
     'django.contrib.staticfiles',
     'rest_framework',
@@ -95,6 +97,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
 BNET_CLIENT_ID = os.getenv("BNET_CLIENT_ID")
 BNET_CLIENT_SECRET = os.getenv("BNET_CLIENT_SECRET")

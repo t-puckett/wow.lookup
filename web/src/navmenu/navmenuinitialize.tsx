@@ -4,20 +4,13 @@ import axios from "axios";
 export default function NavMenuInitialize() {
 
     const instance = axios.create({
-        baseURL: "http://localhost:8080/",
+        baseURL: "http://localhost:8000/",
         timeout:1000,
         responseType: 'json'
     })
 
-    async function login (){
-        try {
-            const response = await instance.get("/api/bnet_login");
-            console.log(response)
-        }
-        catch (error)
-        {
-            console.error(error)
-        }
+    function login (){
+        window.location.href = "http://localhost:8000/api/auth/bnet/login/";
     }
 
 
