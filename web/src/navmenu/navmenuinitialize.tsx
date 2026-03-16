@@ -3,9 +3,15 @@ import axios from "axios";
 
 export default function NavMenuInitialize() {
 
+    const instance = axios.create({
+        baseURL: "http://localhost:8080/",
+        timeout:1000,
+        responseType: 'json'
+    })
+
     async function login (){
         try {
-            const response = await axios.get("/api/bnet_login");
+            const response = await instance.get("/api/bnet_login");
             console.log(response)
         }
         catch (error)
@@ -21,7 +27,7 @@ export default function NavMenuInitialize() {
             <Nav>
             <Navbar.Brand href="#home">WoW Lookup</Navbar.Brand>
                 <Nav.Link href="#character">Character</Nav.Link>
-                    <Button onClick={login} id="battle-net" className="position-absolute border rounded border-2 end-0 p-2 mb-2" variant="primary">Battle.Net Login</Button>
+                <Button onClick={login} id="battle-net" className="position-absolute border rounded border-2 end-0 p-2 mb-2" variant="primary">Battle.Net Login</Button>
             </Nav>
         </Container>
     </Navbar>
