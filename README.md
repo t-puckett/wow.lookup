@@ -14,4 +14,6 @@ when you are in backend vial terminal rin the following to start the virtual env
 5. Run 'python -m venv venv'
 6. cd into backend/venv/Scripts
 7. Run Powershell command ./Activate.ps1
-8. Run pip install -r requirements.txt
+8. cd into Wow.lookup.backend
+9. Run pip install -r backend/dependencies.txt
+10. python manage.py runserver
