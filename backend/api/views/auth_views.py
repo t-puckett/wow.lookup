@@ -45,5 +45,11 @@ def bnet_callback(request):
 
     if token_response.status_code != 200:
         return Response({'error': 'Token exchange failed'}, status=400)
+    
+    print(token_response.json())
 
-    return Response(token_response.json())
+    params = token_response.json()
+    frontend_url = 'http://localhost:8080/'
+    redirect_uri = f"{frontend_url}?{urllib.parse.urlencode(params)}"
+
+    return HttpResponseRedirect(redirect_uri)

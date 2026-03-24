@@ -1,4 +1,4 @@
-import Home from './home/home.tsx'
+import Home from './components/home/home.tsx'
 
 
 function App() {

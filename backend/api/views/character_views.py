@@ -17,3 +17,10 @@ def character_summary(request):
         'info' : 'temp'
     }
     return Response({'code': code, 'params': params})
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def ping(request):
+    test = "ping"
+
+    return Response(test)

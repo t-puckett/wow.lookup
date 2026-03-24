@@ -1,20 +1,28 @@
 import { Button, Container, Nav, Navbar } from "react-bootstrap"
-// import axios from "axios";
+import LoginButton from "../loginbutton/loginbutton";
+import { useState } from "react";
+import Axios from "axios";
 
 export default function NavMenuInitialize() {
+    const [change, setChange] = useState('Boo');
 
-    function login (){
-        window.location.href = "http://localhost:8000/api/auth/bnet/login/";
+    async function Test (){
+        try {
+            const response = await Axios.get("http://localhost:8000/api/ping/");
+            setChange(response.data);
+        }catch(error){
+            console.log(error);
+        }
     }
 
-
     return (<>
-    <Navbar id="nav-bar" className="border border-2 border rounded border-light-subtle justify-content-between">
+    <Navbar id="nav-bar" className="bg-body-tertiary border-black border border-2 justify-content-between">
         <Container>
             <Nav>
             <Navbar.Brand href="#home">WoW Lookup</Navbar.Brand>
                 <Nav.Link href="#character">Character</Nav.Link>
-                <Button href="#" onClick={login} id="battle-net" className="position-absolute border rounded border-2 end-0 p-2 mb-2" variant="primary">Battle.Net Login</Button>
+                    <Button onClick={Test} id="ping" className="border-black p-2 me-2" variant="primary">{change}</Button>
+                    <LoginButton></LoginButton>
             </Nav>
         </Container>
     </Navbar>

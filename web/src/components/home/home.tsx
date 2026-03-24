@@ -6,7 +6,7 @@ import NavMenuInitialize from '../navmenu/navmenuinitialize.tsx'
 
 export default function Home() {
     return (
-        <Container>
+        <Container fluid>
             <NavMenuInitialize/>
             <SearchBox/>
         </Container>
